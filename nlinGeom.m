@@ -29,25 +29,23 @@ points = [pointsL, pointsR];
 values = fun(points);
 
 signs1 = sign(values);
-signs2 = circshift(signs1, 1);
+signs2 = circshift(signs1, -1);
+signs2(end) = 0;
 signChanges = find((signs1.*signs2) < 0);
 
 roots = zeros(1,100000);
 rootsFound = 0;
 
 for i = 1:size(signChanges,2)
-    bPos = signChanges(i);
-    if bPos == 1
-        continue
-    end
-    aVal = values(bPos-1);
-    bVal = values(bPos);
+    aPos = signChanges(i);
+    aVal = values(aPos);
+    bVal = values(aPos+1);
     if ~isreal(aVal) || ~isreal(bVal) || isnan(aVal) || isnan(bVal)
         continue
     end
 
     rootsFound = rootsFound+1;
-    roots(rootsFound) = findRoot(fun,points(bPos-1),points(bPos));
+    roots(rootsFound) = findRoot(fun,points(aPos),points(aPos+1));
 end
 
 roots = roots(1:rootsFound);
