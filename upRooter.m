@@ -3,10 +3,10 @@ function rts = upRooter(fun,initSize,ratio,seqLength,accuracy,iterLimit)
 %   rts = UPROOTER(fun)
 %       Takes in a function handle 'fun', and returns found roots 'rts' as
 %       a vertical vector
-%
+% 
 %   rts = UPROOTER(fun, initSize, ratio, seqLength, accuracy, iterLimit)
 %       Runs the root finding algorithm with custom parameters (see below)
-%       
+% 
 %   To calculate the roots, upRooter uses the following algorithm:
 %   1.  Generate a vector of the first seqLength elements of a geometric
 %       series (with initial size = initSize and common ratio = ratio).
@@ -16,11 +16,11 @@ function rts = upRooter(fun,initSize,ratio,seqLength,accuracy,iterLimit)
 %       requirement).
 %   3.  Run bisection with found pairs of boundary points, given accuracy
 %       and iterLimit parameters
-%
+% 
 %   Default arguments:
 %       initSize = 5e-010
-%       ratio = 1.0000555;
-%       seqLength = 950000;
+%       ratio = 1.0000555
+%       seqLength = 950000
 %       accuracy = eps()*1000
 %       iterLimit = 100
 
